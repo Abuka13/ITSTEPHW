@@ -1,7 +1,7 @@
 # open('имя_и_расширение_файла', 'режим_открытия')
 # режимы: w r a wb rb w+ r+
-f = open('new.txt',mode='r+')
-print(f.read()) #
+# f = open('new.txt',mode='r+')
+# print(f.read()) #
 #Режимы открытия файла
 # r	Только для чтения.
 # w	Только для записи. Создаст новый файл, если не найдет с указанным именем.
@@ -9,5 +9,12 @@ print(f.read()) #
 # wb	Только для записи (бинарный). Создаст новый файл, если не найдет с указанным именем.
 # r+	Для чтения и записи.
 # rb+	Для чтения и записи (бинарный).
-file1 = open('z_new.txt', mode='w')  # файловый-объект, если файл в папке 'data' - open('data/z_new.txt', 'w')
-file1.write("Python is awesome!123\n\thi")
+# file1 = open('z_new.txt', mode='w')  # файловый-объект, если файл в папке 'data' - open('data/z_new.txt', 'w')
+# file1.write("Python is awesome!123\n\thi")
+# todo ENCODING
+#Если содержимое в файле написано кирриллицей нужно использовать Encoding
+f = open('123.txt','r+')
+print(f.read())
+#Абука скоро станет рыцарем - непонятные символы
+f = open('123.txt',encoding='utf-8')
+print(f.read())
