@@ -19,7 +19,7 @@ while True:
         break
     else:
         print('Пароль неверного формата')
-with open('data.txt', 'w',encoding='utf-8') as f:
+with open('data.txt', 'a',encoding='utf-8') as f:
     f.write(f'{val1}\n')
     f.write(f'Электронный адрес: {email}\n')
 
