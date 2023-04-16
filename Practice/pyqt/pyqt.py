@@ -3,9 +3,8 @@ import threading
 import time
 
 from PyQt6 import QtWidgets, QtCore, QtGui, uic
-# https://build-system.fman.io/qt-designer-download
-# https://www.pythontutorial.net/pyqt/qt-designer/
-# https://geekscoders.com/how-to-load-qt-designer-ui-file-in-pyqt6/
+from PyQt5.QtWidgets import QMainWindow
+
 
 class Window(QtWidgets.QWidget):
     def __init__(self):
@@ -16,7 +15,6 @@ class Window(QtWidgets.QWidget):
         self.seconds = 0
         self.minutes = 0
         self.hours = 0
-
     def start_timer(self):
         self.play = True
 
@@ -41,45 +39,57 @@ class Window(QtWidgets.QWidget):
                 self.seconds = 0
             text = f"{self.hours}:{self.minutes}" + ":" + str(self.seconds)
             # print(text)
-            self.ui.labelText.setText(text)  # Обновление (рендер) label
+            self.ui.labeltext.setText(text)  # Обновление (рендер) label
             time.sleep(1.0)
 
     def stop_timer(self):
         self.play = False
-
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
-        # todo основное ################################################################################################
         super().__init__()
-        self.setWindowTitle("My App")
-        # self.setWindowIcon()
-        self.setGeometry(150, 150, 640, 480)
-        self.layout = QtWidgets.QGridLayout()
-        self.widget = QtWidgets.QWidget()
         self.play = True
         self.seconds = 0
         self.minutes = 0
         self.hours = 0
-        # todo основное ################################################################################################
+        # TODO Основа
 
-        #
+        self.setWindowTitle("proga")
+        self.setGeometry(300, 400, 1300, 400)  # Ширина i t.d
+        self.layout = QtWidgets.QGridLayout()
+        self.widget = QtWidgets.QWidget()
+        # TODO Надпись
+        # self.main_text = QtWidgets.QLabel("Phone:",self)
+        # self.main_text2 = QtWidgets.QLabel("11111111111:", self)
 
-        # todo вёрстка #################################################################################################
 
-        self.button_label = QtWidgets.QLabel("Нажмите кнопку:", self)
-        self.layout.addWidget(self.button_label, 0, 0)
+        # self.main_text.move(100, 100)
+        # self.main_text.adjustSize()  # Настроить ширину под обьект
 
-        self.button_start = QtWidgets.QPushButton("запустить")
+        self.new_text = QtWidgets.QLabel(self)
+
+
+        # TODO КНОПКА
+        self.button_label = QtWidgets.QLabel("Нажмите кнопку", self)
+        self.layout.addWidget(self.button_label,0,0)
+
+        self.button_start = QtWidgets.QPushButton("Запустить", self)
         self.button_start.clicked.connect(self.start_timer)
         self.layout.addWidget(self.button_start, 1, 0)
 
-        self.label_timer = QtWidgets.QLabel("Счётчик:", self)
-        self.layout.addWidget(self.label_timer, 0, 1)
+        self.label_timer = QtWidgets.QLabel("Счетчик", self)
+        self.layout.addWidget(self.label_timer, 2, 0)
 
         self.label_text = QtWidgets.QLabel("", self)
-        self.layout.addWidget(self.label_text, 1, 1)
+        self.layout.addWidget(self.label_text, 3, 0)
 
-        # todo вёрстка #################################################################################################
+
+
+        #TODO Позиционирование
+
+
+        # self.layout.addWidget(self.main_text, 0, 0)
+        # self.layout.addWidget(self.main_text2, 1, 0)
+
 
         self.widget.setLayout(self.layout)
         self.setCentralWidget(self.widget)
@@ -115,13 +125,17 @@ class MainWindow(QtWidgets.QMainWindow):
         self.play = False
 
 
+    def add_label(self):
+        self.new_text.setText("Вторая надпись")
+        self.new_text.move(100,50)
+        self.new_text.adjustSize()
+
+
 if __name__ == "__main__":
     # app = QtWidgets.QApplication(sys.argv)
-    # app.setStyle('Fusion')
     # window = MainWindow()
     # window.show()
     # app.exec()
-
     app = QtWidgets.QApplication([])
     window = Window()
     window.show()
