@@ -136,7 +136,3 @@ if __name__ == "__main__":
     # window = MainWindow()
     # window.show()
     # app.exec()
-    app = QtWidgets.QApplication([])
-    window = Window()
-    window.show()
-    app.exec()
