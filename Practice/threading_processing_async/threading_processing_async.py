@@ -29,7 +29,7 @@ headers = {
 def time_measure(func):
     def wrapper(*args,**kwargs):
         time_start = time.perf_counter()
-        result = func()
+        result = func(*args,**kwargs)
         time_stop = time.perf_counter()
         print("elapsed time: ", round(time_stop - time_start, 5))
         return result
