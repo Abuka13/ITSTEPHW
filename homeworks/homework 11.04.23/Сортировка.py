@@ -16,6 +16,4 @@ a = sorted(a)
 for i in range(len(a)):
     for j in range(1,len(a)):
         s.append(a[j]-a[i])
-for i in range(len(s)):
-    if s >=0:
-print(s)
+
